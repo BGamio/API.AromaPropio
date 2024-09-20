@@ -28,7 +28,6 @@ public class OlfactoryFamilies extends AuditableAbstractAggregateRoot<OlfactoryF
     @OneToOne(mappedBy = "olfactoryFamilies")
     private Perfume perfume;
 
-    private Long typeOfAromasId;
 
     public OlfactoryFamilies() {
         this.name = "";
@@ -40,6 +39,5 @@ public class OlfactoryFamilies extends AuditableAbstractAggregateRoot<OlfactoryF
 
     public OlfactoryFamilies(CreateOlfactoryFamiliesCommand command) {
         this.name = command.name();
-        this.typeOfAromasId = command.typeOfAroma();
     }
 }
