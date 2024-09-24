@@ -6,8 +6,7 @@ import org.example.api_aromapropio.perfumes.interfaces.rest.resources.OlfactoryF
 public class CreateOlfactoryFamilyCommandFromResourceAssembler {
     public static CreateOlfactoryFamiliesCommand toCommandFromResource(CreateOlfactoryFamiliesResource resource) {
         return new CreateOlfactoryFamiliesCommand(
-                resource.name(),
-                resource.typeOfAromasId()
+                resource.name()
         );
     }
 }

@@ -22,9 +22,6 @@ public class OlfactoryFamilies extends AuditableAbstractAggregateRoot<OlfactoryF
 
     private String name;
 
-    @OneToMany(mappedBy = "olfactoryFamilies", cascade = CascadeType.ALL)
-    private List<TypeOfAromas> aromas = new ArrayList<>();
-
     @OneToOne(mappedBy = "olfactoryFamilies")
     private Perfume perfume;
 

@@ -28,19 +28,14 @@ public class OlfactoryFamiliesController {
     @PostMapping
     public ResponseEntity<OlfactoryFamiliesResource> createOlfactoryFamilies(@RequestBody CreateOlfactoryFamiliesResource resource) {
         var createOlfactoryFamiliesCommand = CreateOlfactoryFamilyCommandFromResourceAssembler.toCommandFromResource(resource);
-        var olfactoryFamilyId = olfactoryFamiliesCommandService.handle(createOlfactoryFamiliesCommand);
-        if (olfactoryFamilyId.isEmpty()) {
-            return ResponseEntity.badRequest().build();
-        }
-        var getOlfactoryFamilyByIdQuery = new GetOlfactoryFamilyByIdQuery(olfactoryFamilyId.get().getId());
-        var olfactoryFamily = olfactoryFamiliesQueryService.handle(getOlfactoryFamilyByIdQuery);
+        var olfactoryFamily = olfactoryFamiliesCommandService.handle(createOlfactoryFamiliesCommand);
         if (olfactoryFamily.isEmpty()) {
             return ResponseEntity.badRequest().build();
-        } else {
-            var olfactoryFamilyResource = OlfactoryFamilyResourceFromEntityAssembler.toResourceFromEntity(olfactoryFamily.get());
-            return ResponseEntity.ok(olfactoryFamilyResource);
         }
+        var olfactoryFamilyResource = OlfactoryFamilyResourceFromEntityAssembler.toResourceFromEntity(olfactoryFamily.get());
+        return ResponseEntity.ok(olfactoryFamilyResource);
     }
+
 
     @GetMapping(value = "/{olfactoryFamilyId}")
     public ResponseEntity<OlfactoryFamiliesResource> getOlfactoryFamilyById(@PathVariable Long olfactoryFamilyId) {

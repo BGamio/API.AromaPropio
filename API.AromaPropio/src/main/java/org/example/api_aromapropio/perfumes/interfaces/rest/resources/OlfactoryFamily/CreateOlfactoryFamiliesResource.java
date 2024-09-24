@@ -1,8 +1,9 @@
 package org.example.api_aromapropio.perfumes.interfaces.rest.resources.OlfactoryFamily;
 
+import java.util.List;
+
 public record CreateOlfactoryFamiliesResource(
-        String name,
-        Long typeOfAromasId
+        String name
 ) {
 
 }

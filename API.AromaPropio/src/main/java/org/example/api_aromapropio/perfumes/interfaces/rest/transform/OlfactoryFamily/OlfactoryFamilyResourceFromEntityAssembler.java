@@ -3,13 +3,13 @@ package org.example.api_aromapropio.perfumes.interfaces.rest.transform.Olfactory
 import org.example.api_aromapropio.perfumes.domain.model.entities.OlfactoryFamilies;
 import org.example.api_aromapropio.perfumes.interfaces.rest.resources.OlfactoryFamily.OlfactoryFamiliesResource;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class OlfactoryFamilyResourceFromEntityAssembler {
     public static OlfactoryFamiliesResource toResourceFromEntity(OlfactoryFamilies olfactoryFamilies) {
         if (olfactoryFamilies != null) {
-            String aromas = olfactoryFamilies.getAromas().stream().map(aroma -> aroma.getId().toString()).collect(Collectors.joining(", "));
-            return new OlfactoryFamiliesResource(olfactoryFamilies.getId(), olfactoryFamilies.getName(), aromas);
+            return new OlfactoryFamiliesResource(olfactoryFamilies.getId(), olfactoryFamilies.getName());
         } else {
             throw new RuntimeException("OlfactoryFamilies not found");
         }
